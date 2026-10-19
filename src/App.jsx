@@ -1,17 +1,40 @@
-import './index.css';
+import KartuMenu from "./components/KartuMenu";
+import Panel from "./components/Panel";
+
+const namaPanggilan = "Aul";
+const N = 16;
+const namaKantin = { color: "#1f3a5f", fontSize: "28px" };
 
 function App() {
-  const namaPanggilan = 'Aul';
-  const saldoAwal = 37;
   const jam = 9;
-  return(
+  var finalHarga = 10000 + N * 100;
+
+  return (
     <>
-    <div className='panel'>
-      <h1 className='judul' style={{color: 'darkBlue', fontSize: '32px'}}>Kantin {namaPanggilan}</h1>
-      <p style={{color: 'blue'}}>Selamat {jam < 12 ? 'Pagi' : 'siang'}</p>
-      <p>Saldo Awal Kartu Kantin: Rp{saldoAwal * 1000}</p>
-      <button disabled>Bayar</button>
-    </div>
+      <h1 className="namaKantin" style={namaKantin}>
+        Kantin {namaPanggilan}
+      </h1>
+      <p>{jam < 12 ? "selamat pagi" : "selamat siang"}</p>
+      <p>saldo awal : {N * 1000}</p>
+      <button disabled>bayar</button>
+
+      <Panel judul={"Menu hari ini"}>
+        <KartuMenu
+          nama="Nasi ayam geprek" 
+          harga={finalHarga}
+          kategori="Makanan"
+        ></KartuMenu>
+        <KartuMenu
+          nama="Es teh lemon"
+          harga={13700}
+          kategori="Makanan"
+        ></KartuMenu>
+        <KartuMenu
+          nama="Mie goreng telur"
+          harga={12000}
+          kategori="Makanan"
+        ></KartuMenu>
+      </Panel>
     </>
   );
 }
